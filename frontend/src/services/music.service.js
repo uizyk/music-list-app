@@ -15,8 +15,8 @@ class MusicService {
     return axios.put(`${API_URL}song/${song.id}`, song);
   }
 
-  deleteSong(id) {
-    return axios.delete(`${API_URL}song/${id}`);
+  deleteSong(song) {
+    return axios.delete(`${API_URL}song/${song.id}`);
   }
 }
 

@@ -1,17 +1,25 @@
 <template>
 
-<div>
+<div id="musicList">
 
-    <div>
+    <div className="header">
         <h2>Title</h2>
         <h2>Artist</h2>
         <h2>Genre</h2>
         <h2>Release Date</h2>
-        <button>Add new song</button>
+        <button class="addSongButton" @click="togglePopup" @mousedown="clickedOnAdd = true">Add new song</button>
     </div>
     <div v-for="song in songs" :key="song.id">
-        <MusicItem :music="song"></MusicItem>
+        <MusicItem :music="song" :togglePopup="togglePopup" :onDelete="onDelete"></MusicItem>
     </div>
+    <PopupModal v-if="formIsVisible" :togglePopup="togglePopup">
+      
+      <MusicForm :music="selectedSong" :clickedOnAdd="clickedOnAdd" :clickedOnAddFalse="clickedOnAddFalse"></MusicForm>
+
+      <!-- <MusicForm v-else></MusicForm> -->
+
+    </PopupModal>
+    
 
 </div>
 
@@ -19,32 +27,103 @@
 
 
 <script>
-import MusicItem from "./MusicItem.vue"
-import musicService from "@/services/music.service";
+import axios from "axios";
+import MusicItem from "./MusicItem.vue";
+import MusicForm from "./MusicForm.vue";
+import PopupModal from "./PopupModal.vue";
+
 
 
 export default {
     components: {
-        MusicItem
+        MusicItem,
+        MusicForm,
+        PopupModal
     },
-
     data() {
-        return{
-          songs: []
-        };
-      },
-      created() {
-        this.fetchMusic();
-      },
-      methods: {
-        fetchMusic() {
-          musicService.getSong().then(response => {
-            this.songs = response.data;
-          });
-        }
+      return{
+        songs: [],
+        formIsVisible: false,
+        selectedSong: null,
+        APIUrl: 'http://localhost:55527/api/song',
+        clickedOnAdd: false
+
+      };
+    },
+    setup () {
+      return {
+        PopupModal
       }
+    },
+    created() {
+      this.fetchMusic();
+    },
+    methods: {
+      fetchMusic() {
+        axios.get(this.APIUrl)
+        .then(response => {
+          this.songs = response.data;
+        });
+      },
+      togglePopup(song){
+        this.formIsVisible = !this.formIsVisible
+        // if(song){
+          this.selectedSong = song;
+        // }else {
+        //   this.selectedSong = null;
+        // }
+      },
+      onDelete(song){
+        this.selectedSong = song;
+        axios.delete(`${this.APIUrl}/${song.SongId}`)
+        .then(response => {
+          alert(response.data)
+          window.location.reload();
+        })
+      },
+
+      clickedOnAddFalse(){
+        this.clickedOnAdd = false;
+      }
+      
+      
     }
+  }
 
 
 
 </script>
+
+<style scoped>
+
+  #musicList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    width: 90vw;
+    display: flex;
+    justify-content: space-around;
+    /* border: 0.5px solid black; */
+    padding: 10px;
+    background: linear-gradient(to right, rgb(173, 83, 137), rgb(60, 16, 83));
+  }
+
+  .header h2 {
+    color: white;
+  }
+
+  .header button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight:600;
+    background-color: white; 
+
+  }
+
+
+</style>
