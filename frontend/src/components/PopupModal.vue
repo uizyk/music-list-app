@@ -2,8 +2,11 @@
     <div class="popup">
         <div class="popup-inner">
             <slot></slot>
-            <button class="popup-close" @click="togglePopup">
+            <button v-if="formIsVisible" class="popup-close" @click="togglePopup">
                 Close 
+            </button>
+            <button v-else class="popup-close" @click="togglePopupFilter">
+                Close filter
             </button>
         </div>
     </div>
@@ -15,7 +18,10 @@ export default {
 
     props: [
 
-        'togglePopup'
+        'togglePopup',
+        'togglePopupFilter',
+        'formIsVisible',
+        'filterIsVisible',
 
     ]
 

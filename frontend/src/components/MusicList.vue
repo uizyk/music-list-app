@@ -7,16 +7,30 @@
         <h2>Artist</h2>
         <h2>Genre</h2>
         <h2>Release Date</h2>
-        <button class="addSongButton" @click="togglePopup" @mousedown="clickedOnAdd = true">Add new song</button>
+        <div className="buttonDiv">
+          <button class="addSongButton" @click="togglePopup" @mousedown="clickedOnAdd = true"><i class="fa-solid fa-plus"></i></button>
+          <button @click="togglePopupFilter"><i class="fa-solid fa-filter"></i></button>
+        </div>
     </div>
-    <div v-for="song in songs" :key="song.SongId">
-        <MusicItem :music="song" :togglePopup="togglePopup" :onDelete="onDelete"></MusicItem>
+    <div v-if="filteredSongs.length === 0">
+      <div v-for="song in songs" :key="song.SongId">
+          <MusicItem :music="song" :togglePopup="togglePopup" :onDelete="onDelete"></MusicItem>
+      </div>
     </div>
-    <PopupModal v-if="formIsVisible" :togglePopup="togglePopup">
+    <div v-else>
+      <div v-for="song in filteredSongs" :key="song.SongId">
+          <MusicItem :music="song" :togglePopup="togglePopup" :onDelete="onDelete"></MusicItem>
+      </div>
+    </div>
+
+    <PopupModal v-if="formIsVisible" :togglePopup="togglePopup" :formIsVisible="formIsVisible">
       
       <MusicForm :music="selectedSong" :clickedOnAdd="clickedOnAdd" :clickedOnAddFalse="clickedOnAddFalse"></MusicForm>
 
-      <!-- <MusicForm v-else></MusicForm> -->
+    </PopupModal>
+    <PopupModal v-if="filterIsVisible" :togglePopupFilter="togglePopupFilter" :filterisVisible="filterIsVisible">
+
+      <MusicFilter @submit-filter="applyFilter"></MusicFilter>
 
     </PopupModal>
     
@@ -31,6 +45,7 @@ import axios from "axios";
 import MusicItem from "./MusicItem.vue";
 import MusicForm from "./MusicForm.vue";
 import PopupModal from "./PopupModal.vue";
+import MusicFilter from "./MusicFilter.vue";
 
 
 
@@ -38,12 +53,15 @@ export default {
     components: {
         MusicItem,
         MusicForm,
-        PopupModal
+        PopupModal,
+        MusicFilter
     },
     data() {
       return{
+        filteredSongs: [],
         songs: [],
         formIsVisible: false,
+        filterIsVisible: false,
         selectedSong: null,
         APIUrl: 'http://localhost:55527/api/song',
         clickedOnAdd: false
@@ -80,6 +98,17 @@ export default {
 
       clickedOnAddFalse(){
         this.clickedOnAdd = false;
+      },
+      togglePopupFilter(){
+        this.filterIsVisible = !this.filterIsVisible
+      },
+
+      applyFilter(filter){
+        this.filteredSongs = this.songs.filter(song => {
+          const releaseDate = new Date(song.ReleaseDate);
+          return releaseDate >= new Date(filter.startDate) && releaseDate <= new Date(filter.endDate);
+        });
+        console.log(this.filteredSongs);
       }
       
       
@@ -114,6 +143,15 @@ export default {
     color: white;
   }
 
+  .buttonDiv {
+
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+
+  }
+
   .header button {
     border: none;
     border-radius: 5px;
@@ -122,8 +160,7 @@ export default {
     background-color: white; 
     color: black;
     height: 35px;
-    width: 130px;
-    align-self: center;
+    width: 40px;
     cursor: pointer;
   }
 
