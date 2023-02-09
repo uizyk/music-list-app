@@ -9,7 +9,7 @@
         <h2>Release Date</h2>
         <button class="addSongButton" @click="togglePopup" @mousedown="clickedOnAdd = true">Add new song</button>
     </div>
-    <div v-for="song in songs" :key="song.id">
+    <div v-for="song in songs" :key="song.SongId">
         <MusicItem :music="song" :togglePopup="togglePopup" :onDelete="onDelete"></MusicItem>
     </div>
     <PopupModal v-if="formIsVisible" :togglePopup="togglePopup">
@@ -91,6 +91,7 @@ export default {
 </script>
 
 <style scoped>
+
 
   #musicList{
     display: flex;

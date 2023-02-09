@@ -50,6 +50,9 @@ export default {
         width: 200px;
         text-align: left;
         font-size: 23px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
 </style>

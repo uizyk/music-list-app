@@ -61,6 +61,7 @@ export default {
         background-color:dodgerblue;
         border-radius: 5px;
         color: white;
+        cursor: pointer;
     }
 
 
