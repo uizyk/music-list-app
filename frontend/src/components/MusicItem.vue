@@ -29,21 +29,27 @@ export default {
 
     .container {
         display: flex;
-        justify-content: space-around;
-        width: 80vw;
-        gap: 70px;
-    
-    
+        justify-content: space-evenly;
+        width: 85vw;    
     }
 
     .container button{
         align-items: center;
         align-self: center;
+        border: none;
+        background-color: dodgerblue;
+        height: 40px;
+        width: 80px;
+        color: white;
+        margin-left: 10px;
+        border-radius: 5px;
+        cursor: pointer;
     }
+
     .container p {
         width: 200px;
         text-align: left;
-        font-size: 20px;
+        font-size: 23px;
     }
 
 </style>

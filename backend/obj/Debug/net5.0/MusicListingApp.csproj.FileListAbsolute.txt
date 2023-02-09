@@ -119,3 +119,47 @@ C:\Users\user\Desktop\MLA rough\backend\obj\Debug\net5.0\refint\MusicListingApp.
 C:\Users\user\Desktop\MLA rough\backend\obj\Debug\net5.0\MusicListingApp.pdb
 C:\Users\user\Desktop\MLA rough\backend\obj\Debug\net5.0\MusicListingApp.genruntimeconfig.cache
 C:\Users\user\Desktop\MLA rough\backend\obj\Debug\net5.0\ref\MusicListingApp.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\appsettings.json
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\MusicListingApp.StaticWebAssets.xml
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\MusicListingApp.exe
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\MusicListingApp.deps.json
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\MusicListingApp.runtimeconfig.json
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\MusicListingApp.runtimeconfig.dev.json
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\MusicListingApp.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\MusicListingApp.pdb
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\System.Data.SqlClient.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\user\Desktop\MusicListApp\backend\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.AssemblyInfo.cs
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\scopedcss\bundle\MusicListingApp.styles.css
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\staticwebassets\MusicListingApp.StaticWebAssets.Manifest.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\staticwebassets\MusicListingApp.StaticWebAssets.Pack.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\staticwebassets\msbuild.MusicListingApp.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\staticwebassets\msbuild.build.MusicListingApp.props
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.MusicListingApp.props
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.MusicListingApp.props
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.RazorTargetAssemblyInfo.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.csproj.CopyComplete
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.dll
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\refint\MusicListingApp.dll
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.pdb
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\MusicListingApp.genruntimeconfig.cache
+C:\Users\user\Desktop\MusicListApp\backend\obj\Debug\net5.0\ref\MusicListingApp.dll

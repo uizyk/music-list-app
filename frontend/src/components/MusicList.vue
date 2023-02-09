@@ -67,11 +67,7 @@ export default {
       },
       togglePopup(song){
         this.formIsVisible = !this.formIsVisible
-        // if(song){
           this.selectedSong = song;
-        // }else {
-        //   this.selectedSong = null;
-        // }
       },
       onDelete(song){
         this.selectedSong = song;
@@ -100,15 +96,17 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+
   }
 
   .header {
-    width: 90vw;
+    width: 100vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* border: 0.5px solid black; */
     padding: 10px;
-    background: linear-gradient(to right, rgb(173, 83, 137), rgb(60, 16, 83));
+    background: #222831;
+    margin-bottom: 40px;
   }
 
   .header h2 {
@@ -117,12 +115,15 @@ export default {
 
   .header button {
     border: none;
-    padding: 10px;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 15px;
     font-weight:600;
     background-color: white; 
-
+    color: black;
+    height: 35px;
+    width: 130px;
+    align-self: center;
+    cursor: pointer;
   }
 
 

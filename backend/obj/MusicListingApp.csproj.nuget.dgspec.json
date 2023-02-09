@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\MLA rough\\backend\\MusicListingApp.csproj": {}
+    "C:\\Users\\user\\Desktop\\MusicListApp\\backend\\MusicListingApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\MLA rough\\backend\\MusicListingApp.csproj": {
+    "C:\\Users\\user\\Desktop\\MusicListApp\\backend\\MusicListingApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\MLA rough\\backend\\MusicListingApp.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\MusicListApp\\backend\\MusicListingApp.csproj",
         "projectName": "MusicListingApp",
-        "projectPath": "C:\\Users\\user\\Desktop\\MLA rough\\backend\\MusicListingApp.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\MusicListApp\\backend\\MusicListingApp.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\MLA rough\\backend\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\MusicListApp\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

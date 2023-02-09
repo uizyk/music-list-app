@@ -2,22 +2,22 @@
     <form>
         <div>
             <label>Song Title</label>
-            <input required type="text" v-model="songTitle" name="songTitle"/>
+            <input ref="title" type="text" v-model="songTitle" name="songTitle"/>
         </div>
         <div>
             <label>Artist</label>
-            <input required type="text" v-model="artist" name="artist"/>
+            <input ref="artist" type="text" v-model="artist" name="artist"/>
         </div>
         <div>
             <label>Genre</label>
-            <input required type="text" v-model="genre" name="genre"/>
+            <input ref="genre" type="text" v-model="genre" name="genre"/>
         </div>
         <div>
             <label>Releast Date</label>
-            <input required type="date" v-model="releaseDate" name="releaseDate"/>
+            <input ref="releaseDate" type="date" v-model="releaseDate" name="releaseDate"/>
         </div>
-        <button v-if="clickedOnAdd" type="submit" @click="onCreate">Submit create</button>
-        <button v-else type="submit" @click="onUpdate" @mousedown="clickedOnAddFalse">Submit edit</button>
+        <button v-if="clickedOnAdd" type="submit" @click="onCreate">Submit</button>
+        <button v-else type="submit" @click="onUpdate" @mousedown="clickedOnAddFalse">Submit</button>
 
     </form>
 </template>
@@ -33,7 +33,7 @@ export default {
             artist: '',
             genre: '',
             releaseDate: '',
-            APIUrl: 'http://localhost:55527/api/song/'
+            APIUrl: 'http://localhost:55527/api/song'
 
         }
     },
@@ -53,32 +53,72 @@ export default {
     },
     methods: {
 
-        onCreate() {
-            axios.post(this.APIUrl, 
-            {
-                SongName: this.songTitle,
-                Artist: this.artist,
-                Genre: this.genre,
-                DateOfRelease: this.releaseDate
-            })
-            .then((response) => {
-                alert(response.data);
+        onCreate(e) {
+            let dateformat = /^(18[0-9]{2}|1[9][0-9]{2}|2[0-4][0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+            let x = this.$refs
+            if(x.title.value.length !== 0 
+                && x.artist.value.length !== 0
+                && x.genre.value.length !== 0
+                ) {
+                    if( x.releaseDate.value.match(dateformat)){
+                        axios.post(this.APIUrl, 
+                        {
+                            SongName: this.songTitle,
+                            Artist: this.artist,
+                            Genre: this.genre,
+                            DateOfRelease: this.releaseDate
+                        })
+                        .then((response) => {
+                            alert(response.data);
+                        })
+                        .catch((error) => {
+                            alert(error)
+                        })
 
+                        console.log("Created successfully")
+                    } else {
+                        e.preventDefault();
+                        alert("Please enter a valid date")
+                    }
+                } else {
+                    e.preventDefault();
+                    alert("Please enter all the inputs before submitting")
+                }
 
-            })
         },
-        onUpdate() {
-            axios.put(`${this.APIUrl}`, 
-            {
-                SongId: this.SongId,
-                SongName: this.songTitle,
-                Artist: this.artist,
-                Genre: this.genre,
-                DateOfRelease: this.releaseDate
-            })
-            .then((response) => {
-                alert(response.data);
-            })
+        onUpdate(e) {
+            let dateformat = /^(18[0-9]{2}|1[9][0-9]{2}|2[0-4][0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+            let x = this.$refs
+            if(x.title.value.length !== 0 
+                && x.artist.value.length !== 0
+                && x.genre.value.length !== 0){
+                    if( x.releaseDate.value.match(dateformat)){
+
+                        axios.put(`${this.APIUrl}?songId=${this.music.SongId}`, 
+                        {
+                            SongId: this.music.SongId,
+                            SongName: this.songTitle,
+                            Artist: this.artist,
+                            Genre: this.genre,
+                            DateOfRelease: this.releaseDate
+                        })
+                        .then((response) => {
+                            alert(response.data);
+                        })
+                        .catch(error => {
+                            console.error(error)
+                        })
+
+                        console.log("Updated successfully")
+
+                    } else {
+                        e.preventDefault();
+                        alert("Please enter a valid date")
+                    }
+                } else {
+                    e.preventDefault();
+                    alert("Please enter all the inputs before submitting");
+                }
         },
 
 
@@ -92,7 +132,6 @@ export default {
 form{
     height: 400px;
     width: 400px;
-    background-color: yellow;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,6 +148,26 @@ form div{
 
 div label{
     font-size: 1.5em;
+}
+
+button {
+    width: 180px;
+    height: 40px;
+    font-size: 20px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+}
+
+input {
+    width: 300px;
+    align-self: center;
+    text-align: center;
+    height: 25px;
+    font-size: 20px;
 }
 
 </style>

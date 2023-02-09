@@ -28,7 +28,7 @@ export default {
 #container{
   display: flex;
   justify-content: center;
-  padding: 20px;
+  background-color: white;
 }
 
 </style>

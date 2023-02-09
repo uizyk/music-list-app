@@ -48,6 +48,19 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        border-radius: 10px;
+    }
+
+    button {
+        margin-bottom: -15px;
+        margin-top: 20px;
+        height: 30px;
+        width: 150px;
+        font-size: 15px;
+        border: none;
+        background-color:dodgerblue;
+        border-radius: 5px;
+        color: white;
     }
 
 
