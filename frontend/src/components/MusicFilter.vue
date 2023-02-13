@@ -1,6 +1,10 @@
 <template>
     <form id="filter-container" @submit.prevent="submitFilter">
-
+        <h3>Song Filter</h3>
+        <div id="artist-filter-container">
+            <label>Artist</label>
+            <input type="text" v-model="enteredArtistName"/>
+        </div>
         <div id="date-filter-container">
             <div>
                 <label>Start Date</label>
@@ -12,7 +16,7 @@
             </div>
         </div>
 
-        <button>Submit</button>
+        <button @click="filterArtistNames">Submit</button>
 
     </form>
 
@@ -23,16 +27,22 @@
 
 <script>
 
+
 export default {
 
-    props: {
-        togglePopupFilter: Function,
-    },
+    props: [
+
+        'togglePopupFilter',
+        'songs'
+
+    ]
+    ,
 
     data() {
         return{
             startDate: "",
-            endDate: ""
+            endDate: "",
+            enteredArtistName: "",
         }
     },
 
@@ -41,19 +51,27 @@ export default {
         submitFilter(){
             let dateformat = /^(18[0-9]{2}|1[9][0-9]{2}|2[0-4][0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
             // e.evt.preventDefault()
-            if( this.startDate.match(dateformat) && this.endDate.match(dateformat)){
+            let artistNames = this.songs.map(song => song.Artist.toLowerCase())
+            if(artistNames.includes(this.enteredArtistName.toLowerCase())){
 
-                this.$emit('submit-filter', {
-                    startDate: this.startDate,
-                    endDate: this.endDate
-                });
-                this.togglePopupFilter();
+                if( this.startDate.match(dateformat) && this.endDate.match(dateformat)){
+    
+                    this.$emit('submit-filter', {
+                        startDate: this.startDate,
+                        endDate: this.endDate,
+                        enteredArtistName: this.enteredArtistName
+                    });
+                    this.togglePopupFilter();
+                } else {
+                    alert("enter a valid date");
+                }
             } else {
-                alert("enter a valid date");
+                alert("enter a existing artist")
             }
             this.startDate = "";
             this.endDate = "";
-        }
+            this.enteredArtistName = "";
+        },
         
     }
 }

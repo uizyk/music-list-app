@@ -6,7 +6,7 @@
         <h2>Title</h2>
         <h2>Artist</h2>
         <h2>Genre</h2>
-        <h2>Release Date</h2>
+        <h2 id="release-date" @click="arrangeByDate">Release Date</h2>
         <div className="buttonDiv">
           <button class="addSongButton" @click="togglePopup" @mousedown="clickedOnAdd = true"><i class="fa-solid fa-plus"></i></button>
           <button @click="togglePopupFilter"><i class="fa-solid fa-filter"></i></button>
@@ -30,7 +30,11 @@
     </PopupModal>
     <PopupModal v-if="filterIsVisible" :togglePopupFilter="togglePopupFilter" :filterisVisible="filterIsVisible">
 
-      <MusicFilter @submit-filter="applyFilter" :togglePopupFilter="togglePopupFilter"></MusicFilter>
+      <MusicFilter 
+        @submit-filter="applyFilter" 
+        :togglePopupFilter="togglePopupFilter" 
+        :songs="songs">
+      </MusicFilter>
 
     </PopupModal>
     
@@ -64,7 +68,7 @@ export default {
         filterIsVisible: false,
         selectedSong: null,
         APIUrl: 'http://localhost:55527/api/song',
-        clickedOnAdd: false
+        clickedOnAdd: false,
 
       };
     },
@@ -105,13 +109,19 @@ export default {
 
 
        applyFilter(filter){
-    let songsToFilter = this.songs.sort((a, b) => new Date(a.DateOfRelease) - new Date(b.DateOfRelease))
-    this.filteredSongs = songsToFilter.filter(song => {
-      return (song.DateOfRelease >= filter.startDate && song.DateOfRelease <= filter.endDate);
-    });
-   
-  }
+        let songsToFilter = this.songs.sort((a, b) => new Date(a.DateOfRelease) - new Date(b.DateOfRelease))
+        this.filteredSongs = songsToFilter.filter(song => {
+          return (song.DateOfRelease >= filter.startDate && song.DateOfRelease <= filter.endDate) && (song.Artist.toLowerCase() === filter.enteredArtistName.toLowerCase());
+        });
+        if (this.filteredSongs.length === 0) {
+          alert("no match found")
+        }
+      },
+
       
+      arrangeByDate(){
+        this.songs.sort((a, b) => new Date(a.DateOfRelease) - new Date(b.DateOfRelease))
+      }
       
     }
   }
@@ -127,7 +137,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-
   }
 
   .header {
@@ -162,6 +171,10 @@ export default {
     color: black;
     height: 35px;
     width: 40px;
+    cursor: pointer;
+  }
+
+  #release-date{
     cursor: pointer;
   }
 
