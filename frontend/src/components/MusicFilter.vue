@@ -1,5 +1,5 @@
 <template>
-    <form id="filter-container">
+    <form id="filter-container" @submit.prevent="submitFilter">
 
         <div id="date-filter-container">
             <div>
@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <button @click="submitFilter">Submit</button>
+        <button>Submit</button>
 
     </form>
 
@@ -25,6 +25,10 @@
 
 export default {
 
+    props: {
+        togglePopupFilter: Function,
+    },
+
     data() {
         return{
             startDate: "",
@@ -35,11 +39,18 @@ export default {
     methods: {
 
         submitFilter(){
+            let dateformat = /^(18[0-9]{2}|1[9][0-9]{2}|2[0-4][0-9]{2})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
             // e.evt.preventDefault()
-            this.$emit('submit-filter', {
-                startDate: this.startDate,
-                endDate: this.endDate
-            });
+            if( this.startDate.match(dateformat) && this.endDate.match(dateformat)){
+
+                this.$emit('submit-filter', {
+                    startDate: this.startDate,
+                    endDate: this.endDate
+                });
+                this.togglePopupFilter();
+            } else {
+                alert("enter a valid date");
+            }
             this.startDate = "";
             this.endDate = "";
         }

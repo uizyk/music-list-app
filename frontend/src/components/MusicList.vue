@@ -30,7 +30,7 @@
     </PopupModal>
     <PopupModal v-if="filterIsVisible" :togglePopupFilter="togglePopupFilter" :filterisVisible="filterIsVisible">
 
-      <MusicFilter @submit-filter="applyFilter"></MusicFilter>
+      <MusicFilter @submit-filter="applyFilter" :togglePopupFilter="togglePopupFilter"></MusicFilter>
 
     </PopupModal>
     
@@ -80,7 +80,7 @@ export default {
       fetchMusic() {
         axios.get(this.APIUrl)
         .then(response => {
-          this.songs = response.data;
+          this.songs = response.data.sort((a, b) => a.SongId - b.SongId)
         });
       },
       togglePopup(song){
@@ -103,13 +103,14 @@ export default {
         this.filterIsVisible = !this.filterIsVisible
       },
 
-      applyFilter(filter){
-        this.filteredSongs = this.songs.filter(song => {
-          const releaseDate = new Date(song.ReleaseDate);
-          return releaseDate >= new Date(filter.startDate) && releaseDate <= new Date(filter.endDate);
-        });
-        console.log(this.filteredSongs);
-      }
+
+       applyFilter(filter){
+    let songsToFilter = this.songs.sort((a, b) => new Date(a.DateOfRelease) - new Date(b.DateOfRelease))
+    this.filteredSongs = songsToFilter.filter(song => {
+      return (song.DateOfRelease >= filter.startDate && song.DateOfRelease <= filter.endDate);
+    });
+   
+  }
       
       
     }
